@@ -533,6 +533,10 @@ spec:
               name: etcd-certs
   {{- end }}
 {{- end }}
+{{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
       volumes:
         # Used by {{ include "nodeName" . }}.
         - name: lib-modules

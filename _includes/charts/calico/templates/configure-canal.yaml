@@ -48,6 +48,10 @@ spec:
             # Mount in the etcd TLS secrets.
             - mountPath: /calico-secrets
               name: etcd-certs
+{{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+{{- end }}
       volumes:
         # Mount in the etcd TLS secrets.
         - name: etcd-certs
